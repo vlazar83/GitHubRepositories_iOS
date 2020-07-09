@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		843B193E24B72A7600336CF9 /* RepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843B193D24B72A7600336CF9 /* RepositoryTableViewCell.swift */; };
+		843B194224B72C6300336CF9 /* RepositoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843B194124B72C6300336CF9 /* RepositoryTableViewController.swift */; };
 		848BF11D24B5A5FE003C4988 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848BF11C24B5A5FE003C4988 /* AppDelegate.swift */; };
 		848BF11F24B5A5FE003C4988 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848BF11E24B5A5FE003C4988 /* SceneDelegate.swift */; };
 		848BF12124B5A5FE003C4988 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848BF12024B5A5FE003C4988 /* ViewController.swift */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		843B193D24B72A7600336CF9 /* RepositoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewCell.swift; sourceTree = "<group>"; };
+		843B194124B72C6300336CF9 /* RepositoryTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewController.swift; sourceTree = "<group>"; };
 		848BF11924B5A5FE003C4988 /* GitHubRepositories_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubRepositories_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		848BF11C24B5A5FE003C4988 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		848BF11E24B5A5FE003C4988 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +66,8 @@
 				848BF11E24B5A5FE003C4988 /* SceneDelegate.swift */,
 				848BF12024B5A5FE003C4988 /* ViewController.swift */,
 				848BF12224B5A5FE003C4988 /* Main.storyboard */,
+				843B194124B72C6300336CF9 /* RepositoryTableViewController.swift */,
+				843B193D24B72A7600336CF9 /* RepositoryTableViewCell.swift */,
 				848BF12824B5A601003C4988 /* Assets.xcassets */,
 				848BF12A24B5A601003C4988 /* LaunchScreen.storyboard */,
 				848BF12D24B5A601003C4988 /* Info.plist */,
@@ -144,6 +150,8 @@
 				848BF12724B5A5FE003C4988 /* GitHubRepositories_iOS.xcdatamodeld in Sources */,
 				848BF12124B5A5FE003C4988 /* ViewController.swift in Sources */,
 				848BF11D24B5A5FE003C4988 /* AppDelegate.swift in Sources */,
+				843B194224B72C6300336CF9 /* RepositoryTableViewController.swift in Sources */,
+				843B193E24B72A7600336CF9 /* RepositoryTableViewCell.swift in Sources */,
 				848BF11F24B5A5FE003C4988 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
