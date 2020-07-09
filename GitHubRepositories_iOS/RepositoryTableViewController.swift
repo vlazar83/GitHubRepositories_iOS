@@ -48,8 +48,12 @@ class RepositoryTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        senndHttpRequest()
-        self.tableView.reloadData()
+        senndHttpRequest(finished: {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
+        
     }
 
     // MARK: - Table view data source
@@ -81,7 +85,7 @@ class RepositoryTableViewController: UITableViewController {
         return cell
     }
     
-    func senndHttpRequest(){
+    func senndHttpRequest(finished: @escaping () -> Void){
         
         // Create URL, encode the "{" and "}" characters around query. https://api.github.com/search/repositories?q={query}&per_page=25&page=
         let originalUrlString = "https://api.github.com/search/repositories?q=%7Bquery%7D&per_page=10&page=1"
@@ -118,6 +122,7 @@ class RepositoryTableViewController: UITableViewController {
                 let parsedData = try! decoder.decode(RepositoryData.self, from: data)
                 self.repositories = parsedData.items
                 
+                finished()
                 /*
                 self.list.forEach {
                     print($0)
