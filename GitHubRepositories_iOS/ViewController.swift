@@ -18,6 +18,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
       // do something
         self.tableView.reloadData()
     } 
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBAction func nextButtonClicked(_ sender: Any) {
         
@@ -66,9 +67,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.delegate = self
         tableView.dataSource = self
         
+        activityIndicator.isHidden = false
+        
         senndHttpRequest(finished: {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                self.activityIndicator.isHidden = true
             }
         })
     }
