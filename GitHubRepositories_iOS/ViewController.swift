@@ -17,14 +17,23 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func refreshTableView() {
       // do something
         self.tableView.reloadData()
-    } 
+    }
+
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     @IBAction func nextButtonClicked(_ sender: Any) {
         
+        self.currentPage += 1
+        setupButtonsOnUI()
+        sendRequest()
     }
     @IBAction func prevButtonClicked(_ sender: Any) {
         
+        if(self.currentPage > 1){
+            self.currentPage -= 1
+        }
+        setupButtonsOnUI()
+        sendRequest()
     }
     
     @IBOutlet weak var tableView: UITableView!
@@ -34,6 +43,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     @IBOutlet weak var prevButtonOutlet: UIButton!
     
     var repositories:Array<Repository> = []
+    
+    var currentPage:Int = 1
     
     struct RepositoryData: Codable {
         var total_count :Int = 0
@@ -67,16 +78,30 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.delegate = self
         tableView.dataSource = self
         
+        setupButtonsOnUI()
+        sendRequest()
+
+    }
+    
+    func sendRequest(){
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
         
-        senndHttpRequest(finished: {
+        senndHttpRequest(pageNr: self.currentPage, finished: {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
                 self.activityIndicator.isHidden = true
                 self.activityIndicator.stopAnimating()
             }
         })
+    }
+    
+    func setupButtonsOnUI(){
+        if(self.currentPage == 1){
+            prevButtonOutlet.isEnabled = false
+        } else {
+            prevButtonOutlet.isEnabled = true
+        }
     }
     
     // MARK: - Table view data source
@@ -109,10 +134,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     
-    func senndHttpRequest(finished: @escaping () -> Void){
+    func senndHttpRequest(pageNr: Int, finished: @escaping () -> Void){
         
         // Create URL, encode the "{" and "}" characters around query. https://api.github.com/search/repositories?q={query}&per_page=25&page=
-        let originalUrlString = "https://api.github.com/search/repositories?q=%7Bquery%7D&per_page=25&page=1"
+        let originalUrlString = "https://api.github.com/search/repositories?q=%7Bquery%7D&per_page=25&page=" + String(pageNr)
         let url = URL(string: originalUrlString)
         guard let requestUrl = url else { fatalError("Failed to load a MyCustomCell from the table.") }
 
