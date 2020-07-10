@@ -87,7 +87,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         activityIndicator.isHidden = false
         activityIndicator.startAnimating()
         
-        senndHttpRequest(pageNr: self.currentPage, finished: {
+        sendHttpRequest(pageNr: self.currentPage, finished: {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
                 self.activityIndicator.isHidden = true
@@ -134,7 +134,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
 
     
-    func senndHttpRequest(pageNr: Int, finished: @escaping () -> Void){
+    func sendHttpRequest(pageNr: Int, finished: @escaping () -> Void){
         
         // Create URL, encode the "{" and "}" characters around query. https://api.github.com/search/repositories?q={query}&per_page=25&page=
         let originalUrlString = "https://api.github.com/search/repositories?q=%7Bquery%7D&per_page=25&page=" + String(pageNr)
