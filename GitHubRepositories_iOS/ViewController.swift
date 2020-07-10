@@ -8,16 +8,36 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+protocol RefreshTableViewDelegateProtocol {
+  func refreshTableView()
+}
 
-    var list:Array<Repository> = []
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, RefreshTableViewDelegateProtocol {
+
+    func refreshTableView() {
+      // do something
+        self.tableView.reloadData()
+    } 
+    
+    @IBAction func nextButtonClicked(_ sender: Any) {
+        
+    }
+    @IBAction func prevButtonClicked(_ sender: Any) {
+        
+    }
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var nextButtonOutlet: UIButton!
+    
+    @IBOutlet weak var prevButtonOutlet: UIButton!
+    
+    var repositories:Array<Repository> = []
     
     struct RepositoryData: Codable {
-       var total_count :Int = 0
+        var total_count :Int = 0
         var incomplete_results : Bool
-       var items: [Repository]
-        
-        
+        var items: [Repository]
     }
     
     struct Repository: Codable {
@@ -43,14 +63,50 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        senndHttpRequest()
+        tableView.delegate = self
+        tableView.dataSource = self
+        
+        senndHttpRequest(finished: {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        })
+    }
+    
+    // MARK: - Table view data source
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return repositories.count
     }
 
     
-    func senndHttpRequest(){
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cellIdentifier = "RepositoryTableViewCell"
+
+        // Configure the cell...
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! RepositoryTableViewCell
+        
+        let repository = repositories[indexPath.row]
+        
+        cell.nameLabel.text = repository.name
+        cell.fullNameLabel.text = repository.fullName
+
+        return cell
+    }
+
+    
+    func senndHttpRequest(finished: @escaping () -> Void){
         
         // Create URL, encode the "{" and "}" characters around query. https://api.github.com/search/repositories?q={query}&per_page=25&page=
-        let originalUrlString = "https://api.github.com/search/repositories?q=%7Bquery%7D&per_page=10&page=1"
+        let originalUrlString = "https://api.github.com/search/repositories?q=%7Bquery%7D&per_page=25&page=1"
         let url = URL(string: originalUrlString)
         guard let requestUrl = url else { fatalError("Failed to load a MyCustomCell from the table.") }
 
@@ -82,14 +138,14 @@ class ViewController: UIViewController {
 
                 let decoder = JSONDecoder()
                 let parsedData = try! decoder.decode(RepositoryData.self, from: data)
-                self.list = parsedData.items
+                self.repositories = parsedData.items
                 
-                print("sallala")
-                
+                finished()
+                /*
                 self.list.forEach {
                     print($0)
                     print("thiss")
-                }
+                } */
             }
             
         }
