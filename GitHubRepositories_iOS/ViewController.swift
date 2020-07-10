@@ -12,6 +12,24 @@ protocol RefreshTableViewDelegateProtocol {
   func refreshTableView()
 }
 
+class Repository: NSObject, Codable {
+   var name = ""
+   var fullName = ""
+   var contributorsURL = ""
+   var size : Int = 0
+   var stargazersCount : Int = 0
+   var forksCount : Int = 0
+    
+    enum CodingKeys : String, CodingKey {
+          case name
+          case fullName = "full_name"
+          case contributorsURL = "contributors_url"
+          case size
+          case stargazersCount = "stargazers_count"
+          case forksCount = "forks_count"
+    }
+}
+
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, RefreshTableViewDelegateProtocol {
 
     func refreshTableView() {
@@ -52,24 +70,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         var items: [Repository]
     }
     
-    struct Repository: Codable {
-       var name = ""
-       var fullName = ""
-       var contributorsURL = ""
-       var size : Int = 0
-       var stargazersCount : Int = 0
-       var forksCount : Int = 0
-        
-        enum CodingKeys : String, CodingKey {
-              case name
-              case fullName = "full_name"
-              case contributorsURL = "contributors_url"
-              case size
-              case stargazersCount = "stargazers_count"
-              case forksCount = "forks_count"
-        }
-        
-    }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -131,6 +132,33 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         cell.fullNameLabel.text = repository.fullName
 
         return cell
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        super.prepare(for: segue, sender: sender)
+        
+        switch(segue.identifier ?? "") {
+            
+            case "RepositoryDetails":
+                guard let repositoryDetailViewController = segue.destination as? RepositoryDetailsViewController else {
+                    fatalError("Unexpected destination: \(segue.destination)")
+                }
+                
+                guard let selectedRepositoryCell = sender as? RepositoryTableViewCell else {
+                    fatalError("Unexpected sender: \(sender)")
+                }
+                
+                guard let indexPath = tableView.indexPath(for: selectedRepositoryCell) else {
+                    fatalError("The selected cell is not being displayed by the table")
+                }
+                
+                let selectedRepository = repositories[indexPath.row]
+                repositoryDetailViewController.repository = selectedRepository
+                
+            default:
+                fatalError("Unexpected Segue Identifier; \(segue.identifier)")
+        }
     }
 
     

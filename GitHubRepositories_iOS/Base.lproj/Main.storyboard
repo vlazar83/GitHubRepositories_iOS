@@ -48,7 +48,7 @@
                                         <connections>
                                             <outlet property="fullNameLabel" destination="1ZM-wF-nfr" id="Hih-ET-afh"/>
                                             <outlet property="nameLabel" destination="OgO-YH-lyZ" id="UOU-N2-dji"/>
-                                            <segue destination="vUu-Kq-vik" kind="showDetail" identifier="RepositoryDetails" id="H6D-tq-nZI"/>
+                                            <segue destination="bTF-Nj-AwL" kind="showDetail" identifier="RepositoryDetails" id="pKl-ES-q9L"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -102,11 +102,11 @@
             <objects>
                 <viewController storyboardIdentifier="RepositoryDetailsViewController" id="bTF-Nj-AwL" customClass="RepositoryDetailsViewController" customModule="GitHubRepositories_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0GE-qA-2WA">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="647"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="78" translatesAutoresizingMaskIntoConstraints="NO" id="Who-ph-ryh">
-                                <rect key="frame" x="16" y="52" width="343" height="134.5"/>
+                                <rect key="frame" x="16" y="8" width="343" height="134.5"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="yh3-Qy-60V">
                                         <rect key="frame" x="0.0" y="0.0" width="138" height="134.5"/>
@@ -199,14 +199,14 @@
                     <connections>
                         <outlet property="forksCountLabel" destination="u92-V2-gca" id="9jH-od-sHG"/>
                         <outlet property="fullNameLabel" destination="iUV-PU-AtV" id="gRE-Db-F6i"/>
-                        <outlet property="nameLabel" destination="iUV-PU-AtV" id="aBE-F9-YwG"/>
+                        <outlet property="nameLabel" destination="qTL-nr-fky" id="mhk-86-w30"/>
                         <outlet property="sizeLabel" destination="LdV-ox-dKK" id="gS9-aX-YPe"/>
                         <outlet property="stargazersCountLabel" destination="J41-Yz-DPi" id="X49-ZF-Cu4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="isw-jK-U4G" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2791.1999999999998" y="80.50974512743629"/>
+            <point key="canvasLocation" x="1990" y="81"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ogf-Xd-2jj">
@@ -225,24 +225,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YMK-Ze-kft" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="138.40000000000001" y="81.409295352323838"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="dMu-mg-4Hh">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="vUu-Kq-vik" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="fGo-49-ao4">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="bTF-Nj-AwL" kind="relationship" relationship="rootViewController" id="wsW-zl-vxi"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="sh0-8J-ec3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1930" y="81"/>
         </scene>
     </scenes>
     <resources>

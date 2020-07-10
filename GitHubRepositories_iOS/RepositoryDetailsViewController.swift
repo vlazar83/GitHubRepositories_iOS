@@ -9,7 +9,7 @@
 import UIKit
 
 class RepositoryDetailsViewController: UIViewController {
-
+    
     @IBOutlet weak var sizeLabel: UILabel!
     @IBOutlet weak var forksCountLabel: UILabel!
     @IBOutlet weak var stargazersCountLabel: UILabel!
@@ -22,10 +22,18 @@ class RepositoryDetailsViewController: UIViewController {
         
     }
     
+    var repository: Repository?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        self.sizeLabel.text = String(repository!.size)
+        self.forksCountLabel.text = String(repository!.forksCount)
+        self.stargazersCountLabel.text = String(repository!.stargazersCount)
+        self.fullNameLabel.text = String(repository!.fullName)
+        self.nameLabel.text = String(repository!.name)
     }
     
 
