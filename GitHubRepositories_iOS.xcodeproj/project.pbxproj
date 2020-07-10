@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		843B193E24B72A7600336CF9 /* RepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843B193D24B72A7600336CF9 /* RepositoryTableViewCell.swift */; };
 		843D8EE224B84F76002604A6 /* RepositoryDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D8EE124B84F76002604A6 /* RepositoryDetailsViewController.swift */; };
+		843D8EE624B862AC002604A6 /* RepositoryDetailsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843D8EE524B862AC002604A6 /* RepositoryDetailsTableViewCell.swift */; };
 		848BF11D24B5A5FE003C4988 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848BF11C24B5A5FE003C4988 /* AppDelegate.swift */; };
 		848BF11F24B5A5FE003C4988 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848BF11E24B5A5FE003C4988 /* SceneDelegate.swift */; };
 		848BF12124B5A5FE003C4988 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 848BF12024B5A5FE003C4988 /* ViewController.swift */; };
@@ -21,6 +22,7 @@
 /* Begin PBXFileReference section */
 		843B193D24B72A7600336CF9 /* RepositoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewCell.swift; sourceTree = "<group>"; };
 		843D8EE124B84F76002604A6 /* RepositoryDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailsViewController.swift; sourceTree = "<group>"; };
+		843D8EE524B862AC002604A6 /* RepositoryDetailsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepositoryDetailsTableViewCell.swift; sourceTree = "<group>"; };
 		848BF11924B5A5FE003C4988 /* GitHubRepositories_iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GitHubRepositories_iOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		848BF11C24B5A5FE003C4988 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		848BF11E24B5A5FE003C4988 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				843D8EE124B84F76002604A6 /* RepositoryDetailsViewController.swift */,
 				848BF12224B5A5FE003C4988 /* Main.storyboard */,
 				843B193D24B72A7600336CF9 /* RepositoryTableViewCell.swift */,
+				843D8EE524B862AC002604A6 /* RepositoryDetailsTableViewCell.swift */,
 				848BF12824B5A601003C4988 /* Assets.xcassets */,
 				848BF12A24B5A601003C4988 /* LaunchScreen.storyboard */,
 				848BF12D24B5A601003C4988 /* Info.plist */,
@@ -151,6 +154,7 @@
 				848BF12124B5A5FE003C4988 /* ViewController.swift in Sources */,
 				848BF11D24B5A5FE003C4988 /* AppDelegate.swift in Sources */,
 				843B193E24B72A7600336CF9 /* RepositoryTableViewCell.swift in Sources */,
+				843D8EE624B862AC002604A6 /* RepositoryDetailsTableViewCell.swift in Sources */,
 				848BF11F24B5A5FE003C4988 /* SceneDelegate.swift in Sources */,
 				843D8EE224B84F76002604A6 /* RepositoryDetailsViewController.swift in Sources */,
 			);
