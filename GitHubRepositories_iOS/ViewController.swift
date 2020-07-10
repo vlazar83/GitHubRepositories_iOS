@@ -68,11 +68,13 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         tableView.dataSource = self
         
         activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
         
         senndHttpRequest(finished: {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
                 self.activityIndicator.isHidden = true
+                self.activityIndicator.stopAnimating()
             }
         })
     }
