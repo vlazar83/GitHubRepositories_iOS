@@ -20,6 +20,7 @@ class Contributor: NSObject, Codable {
 
 class RepositoryDetailsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var sizeLabel: UILabel!
     @IBOutlet weak var forksCountLabel: UILabel!
@@ -79,19 +80,29 @@ class RepositoryDetailsViewController: UIViewController, UITableViewDataSource, 
         
         cell.contributorName.text = contributor.name
         cell.avatarImageURL = contributor.avatarImageUrl
+        
+        let url = URL(string: contributor.avatarImageUrl)!
+        
+        DispatchQueue.global().async {
+            let data = try? Data(contentsOf: url) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+            DispatchQueue.main.async {
+                cell.avatarImage.image = UIImage(data: data!)
+            }
+        }
 
         return cell
     }
     
     func sendRequest(){
-        //activityIndicator.isHidden = false
-        //activityIndicator.startAnimating()
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
         
         sendHttpRequest(contributorsUrl: self.repository!.contributorsURL, finished: {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
-                //self.activityIndicator.isHidden = true
-                //self.activityIndicator.stopAnimating()
+                self.tableView.layoutIfNeeded()
+                self.activityIndicator.isHidden = true
+                self.activityIndicator.stopAnimating()
             }
         })
     }
